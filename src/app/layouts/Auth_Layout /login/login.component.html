@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center min-vh-100">
+
+
+        <div class="col-md-6 col-lg-5 col-xl-4">
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="text-center mb-4">
+
+                        <h2 class="card-title fw-bold">تسجيل الدخول</h2>
+                        <p class="text-muted">أهلاً بك مجدداً!</p>
+                    </div>
+
+                    <form [formGroup]="formLogin">
+                        <app-input-filed [Lable]="'البريد الاكتروني '" [placeholder]="'abdalla@gmail.com'"
+                            [type]="'email'" formControlName="email"></app-input-filed>
+
+                        <app-input-filed [Lable]="'كلمة المرور'" [placeholder]="'*******'" [type]="'password'"
+                            formControlName="password"></app-input-filed>
+
+                        <div class="d-grid">
+                            <app-button-shared [label]="'تسجيل الدخول'" [loading]="isLoading"
+                                [disabled]="formLogin.invalid" [type]="'submit'"
+                                (buttonClick)="onLogin()"></app-button-shared>
+                        </div>
+
+
+                        <div class="text-center mt-4">
+                            <a href="#" class="text-decoration-none">نسيت كلمة المرور؟</a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

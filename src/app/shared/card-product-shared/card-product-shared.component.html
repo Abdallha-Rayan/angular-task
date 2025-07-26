@@ -1,0 +1,11 @@
+@if (Product) {
+
+<div class="card h-100 ">
+    <img [src]="Product.images" class=" card-img-top" alt="...">
+    <div class="card-body">
+        <h3 class="card-text text-primary">{{Product.title}}</h3>
+        <span class="card-text text-secondary"> <span class="fw-bold">Price :</span>{{Product.price}}</span>
+        <p class="card-text text-secondary"><span class="fw-bold">Description :</span> {{Product.description}}</p>
+    </div>
+</div>
+}

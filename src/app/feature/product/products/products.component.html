@@ -1,0 +1,29 @@
+@if (_ProductService.loading()) {
+<div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+  <app-spinner></app-spinner>
+</div>
+}
+
+@else if (_ProductService.error()) {
+<div class="alert alert-danger text-center" role="alert">
+  <p><strong>حدث خطأ:</strong></p>
+  <p>{{ _ProductService.error() }}</p>
+</div>
+}
+
+@else {
+<div class="row">
+
+  @for (product of _ProductService.products(); track product.id) {
+  <div class="col-lg-4 col-md-6 mb-4">
+    <app-card-product-shared [Product]="product"></app-card-product-shared>
+  </div>
+  }
+
+  @empty {
+  <div class="col-12 text-center">
+    <p>لا توجد منتجات لعرضها حاليًا.</p>
+  </div>
+  }
+</div>
+}

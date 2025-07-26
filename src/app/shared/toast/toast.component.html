@@ -1,0 +1,18 @@
+@if (toastService.show()) {
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <div class="toast show align-items-center border-0" [ngClass]="{
+          'bg-success-subtle text-success-emphasis': toastService.type() === 'success',
+          'bg-danger-subtle text-danger-emphasis': toastService.type() === 'error',
+          'bg-info-subtle text-info-emphasis': toastService.type() === 'info',
+          'bg-warning-subtle text-warning-emphasis': toastService.type() === 'warning'
+        }" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                {{ toastService.message() }}
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" (click)="toastService.hideToast()" aria-label="Close">
+            </button>
+        </div>
+    </div>
+</div>
+}

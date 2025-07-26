@@ -1,0 +1,51 @@
+/* 
+  src/app/layouts/System_Layout/system-layout/system-layout.component.scss
+*/
+
+// الخطوة 1: إعداد العنصر المضيف (host element) ليكون حاوية Flex الرئيسية.
+// :host يشير إلى العنصر الجذر للمكون نفسه (<app-system-layout>).
+:host {
+    // نحوله إلى Flex Container لترتيب العناصر (navbar, main-container, footer) بشكل عمودي.
+    display: flex;
+    flex-direction: column;
+  
+    // أهم خاصية: نضمن أن ارتفاع المكون يملأ الشاشة بالكامل على الأقل.
+    // vh = Viewport Height (ارتفاع إطار العرض).
+    min-height: 100vh;
+  }
+  
+  // الخطوة 2: استهداف حاوية المحتوى الرئيسية.
+  .main-container {
+    // الخاصية السحرية: نجعل هذه الحاوية تنمو لتملأ أي مساحة فارغة متبقية.
+    // هذا يدفع الفوتر (العنصر الذي يليه) إلى أسفل الشاشة.
+    // flex: 1; هو اختصار لـ:
+    // flex-grow: 1;   (اسمح له بالنمو)
+    // flex-shrink: 1; (اسمح له بالتقلص)
+    // flex-basis: 0%; (ابدأ من حجم صفر)
+    flex: 1;
+  
+    // اختياري: إذا كنت تريد أن يتمدد المحتوى داخل .main-container أيضًا،
+    // يمكنك جعلها flex container هي الأخرى.
+    display: flex;
+    flex-direction: column;
+  }
+  
+  // الخطوة 3: استهداف عنصر <main> داخل .main-container
+  main {
+    // هذا يضمن أن عنصر <main> يملأ المساحة المتاحة داخل .main-container.
+    // مفيد إذا كان .main-container يحتوي على عناصر أخرى غير <main>.
+    flex: 1;
+    
+    // يمكنك إضافة padding هنا لإعطاء مساحة داخلية للمحتوى.
+    padding: 2rem; // مثال: 2rem من كل الجوانب
+  }
+  
+  // الخطوة 4: التأكد من أن مكونات Navbar و Footer لا تتقلص.
+  // هذا يضمن أنها تحافظ على ارتفاعها الطبيعي.
+  app-navbar,
+  app-footer {
+    flex-shrink: 0;
+  }
+
+  
+  

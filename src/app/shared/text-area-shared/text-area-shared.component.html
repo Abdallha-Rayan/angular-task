@@ -1,0 +1,18 @@
+<div class="mb-3">
+
+
+
+    @if (Label) {
+    <label for="exampleFormControlTextarea1" class="form-label">{{Label}}</label>
+    }
+
+    <div class="input-group">
+
+
+
+        <textarea [id]="Label" class="form-control" [disabled]="isDisabled" [value]="value" [rows]="rows"
+            (input)="onInputChange($event)" (blur)="onTouched()"></textarea>
+
+
+    </div>
+</div>

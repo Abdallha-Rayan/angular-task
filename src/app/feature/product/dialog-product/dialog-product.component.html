@@ -1,0 +1,38 @@
+<div class="card flex justify-content-center">
+    <p-dialog [header]="isEditMode ?'تعديل المنتج':'حفظ المنتج'" (visibleChange)="onClose()" [modal]="true"
+        [(visible)]="visible" [style]="{ width: '50rem' }">
+        <form [formGroup]="productForm" class="container-fluid">
+
+
+            <div class="row g-3">
+                <div class="col-6">
+                    <app-input-filed [Lable]="'عنوان'" [placeholder]="' عنوان'" [type]="'text'"
+                        formControlName="title"></app-input-filed>
+                </div>
+                <div class="col-6">
+
+                    <app-input-filed [Lable]="'السعر '" [placeholder]="'٢٢$'" [type]="'number'"
+                        formControlName="price"></app-input-filed>
+                </div>
+                <div class="col-12">
+                    <app-text-area-shared [Label]="'وصف'" placeholder="......" [rows]="3"
+                        formControlName="description"></app-text-area-shared>
+                </div>
+            </div>
+
+
+
+
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="d-flex justify-content-end align-items-center gap-2">
+                <app-button-shared [cssClass]="'btn btn-outline-secondary'" label="إلغاء" (buttonClick)="onClose()">
+                </app-button-shared>
+
+                <app-button-shared [cssClass]="'btn btn-primary'"
+                    [label]="isEditMode ? 'حفظ التغييرات' : 'إضافة المنتج'" (buttonClick)="onSave()">
+                </app-button-shared>
+            </div>
+        </ng-template>
+    </p-dialog>
+</div>

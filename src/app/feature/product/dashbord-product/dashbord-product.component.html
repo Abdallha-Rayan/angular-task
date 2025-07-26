@@ -1,0 +1,67 @@
+<p-table #dt2 [loading]="_ProductService.deleting()" [value]="products" sortField="price" [sortOrder]="-1"
+    styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}"
+    [globalFilterFields]="['title', 'price', 'Category', 'slug']">
+    <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between align-items-center">
+
+
+            <div style="width: 300px;">
+                <app-input-filed (valueChange)="dt2.filterGlobal($event, 'contains')" iconClass="pi pi-search"
+                    [placeholder]="'Search...'" [type]="'text'">
+                </app-input-filed>
+            </div>
+
+
+            <div class="d-flex gap-2">
+
+
+                <app-button-shared [cssClass]="'btn btn-success'" [iconClass]="'pi pi-file-excel me-2'"
+                    [label]="'تصدير إلى Excel'" [type]="'submit'" (buttonClick)="exportToExcel()"></app-button-shared>
+                <app-button-shared [cssClass]="'btn btn-primary'" [iconClass]="'pi pi-plus me-2'"
+                    [label]="'إضافة منتج جديد'" [type]="'submit'" (buttonClick)="onAddProduct()"></app-button-shared>
+
+
+            </div>
+
+        </div>
+
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="title" style="width:20%">
+                title <p-sortIcon field="title" />
+            </th>
+            <th pSortableColumn="price" style="width:20%">
+                price <p-sortIcon field="price" />
+            </th>
+            <th pSortableColumn="category" style="width:20%">
+                Category <p-sortIcon field="category" />
+            </th>
+            <th pSortableColumn="slug" style="width:20%">
+                slug <p-sortIcon field="slug" />
+            </th>
+            <th pSortableColumn="Action" style="width:20%">
+                Action
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{ product.title }}</td>
+            <td>{{ product.price| currency:'USD':'code' }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>{{ product.slug }}</td>
+            <td>
+                <i class="bi bi-pencil-square fs-5 text-secondary me-3" (click)="openEditProductDialog(product)"
+                    style="cursor: pointer;">
+                </i>
+
+                <i (click)="onDelete(product)" class="bi bi-trash3-fill fs-5 text-danger" style="cursor: pointer;">
+                </i>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<app-dialog-product (save)="handlecourseSave($event)" [visible]="isproductDialogVisible()"
+    [itemToEdit]="selectedProductForEdit()" (visibleChange)="handleDialogVisibilityChange($event)"></app-dialog-product>

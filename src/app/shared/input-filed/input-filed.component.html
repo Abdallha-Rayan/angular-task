@@ -1,0 +1,18 @@
+<div class="mb-3">
+    @if (Lable) {
+    <label [for]="Lable" class="form-label">{{Lable}}</label>
+    }
+
+    <div class="input-group">
+
+
+        @if (iconClass) {
+        <span class="input-group-text">
+            <i [ngClass]="iconClass"></i>
+        </span>
+        }
+
+        <input [id]="Lable" [type]="type" [placeholder]="placeholder" [value]="value" [disabled]="isDisabled"
+            (input)="onInputChange($event)" (blur)="onTouched()" class="form-control" />
+    </div>
+</div>
