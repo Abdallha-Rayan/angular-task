@@ -44,6 +44,7 @@ export class DialogProductComponent {
       this.productForm.patchValue({ ...this.itemToEdit })
     } else {
       console.log('Add mode: Resetting form');
+      // Add a first value in Object 
       this.productForm.reset({
         id: null,
         title: 'rayan',
