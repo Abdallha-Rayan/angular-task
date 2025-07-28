@@ -46,9 +46,9 @@ export class DialogProductComponent {
       console.log('Add mode: Resetting form');
       this.productForm.reset({
         id: null,
-        title: 'rayan', // <-- القيمة الأولية هنا
-        price: 55,      // <-- القيمة الأولية هنا
-        description: 'ajsdbkajdkajbs', // <-- القيمة الأولية هنا
+        title: 'rayan',
+        price: 55,
+        description: 'ajsdbkajdkajbs',
         categoryId: 1,
         images: [['https://placehold.co/600x400']]
       });
