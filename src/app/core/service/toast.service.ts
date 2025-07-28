@@ -1,4 +1,3 @@
-// src/app/core/services/toast.service.ts
 import { computed, Injectable, signal } from '@angular/core';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
