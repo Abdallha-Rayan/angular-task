@@ -26,9 +26,7 @@ export class DashbordProductComponent {
   isproductDialogVisible = signal(false);
 
   constructor() {
-    effect(() => {
-      this.products = this._ProductService.products();
-    });
+
   }
 
   exportToExcel(): void {

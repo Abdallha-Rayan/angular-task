@@ -14,9 +14,7 @@ import { ProductService } from '../../../core/service/product.service';
 export class ProductsComponent implements OnInit {
   _ProductService = inject(ProductService)
   constructor() {
-    effect(() => {
-      this._ProductService.products();
-    });
+
   }
   ngOnInit(): void {
 

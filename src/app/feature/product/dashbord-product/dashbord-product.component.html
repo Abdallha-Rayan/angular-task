@@ -1,5 +1,5 @@
-<p-table #dt2 [loading]="_ProductService.deleting()" [value]="products" sortField="price" [sortOrder]="-1"
-    styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}"
+<p-table #dt2 [loading]="_ProductService.deleting()" [value]="_ProductService.products()" sortField="price"
+    [sortOrder]="-1" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}"
     [globalFilterFields]="['title', 'price', 'Category', 'slug']">
     <ng-template pTemplate="caption">
         <div class="d-flex justify-content-between align-items-center">
