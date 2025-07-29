@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { InputFiledComponent } from '../../../shared/input-filed/input-filed.component';
 import { ButtonSharedComponent } from '../../../shared/button-shared/button-shared.component';
@@ -13,7 +13,9 @@ import { DialogProductComponent } from '../dialog-product/dialog-product.compone
   imports: [TableModule,
     DialogProductComponent, InputFiledComponent, ButtonSharedComponent, CommonModule],
   templateUrl: './dashbord-product.component.html',
-  styleUrl: './dashbord-product.component.scss'
+  styleUrl: './dashbord-product.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class DashbordProductComponent {
   private _ExportService = inject(ExportService)
