@@ -5,12 +5,7 @@ import { environment } from '../../../environments/environment';
 import { catchError, EMPTY, Observable, tap, throwError } from 'rxjs';
 import { Product } from '../../shared/Module/product-module';
 
-interface ProductState {
-  products: Product[];
-  loading: boolean;
-  error: string | null;
-  deleting: boolean;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +31,10 @@ export class ProductService {
 
 
   constructor() {
+    this.getAllProducts()
+  }
+
+  getAllProducts() {
     this.http.get<Product[]>(`${this.apiUrl}products`).pipe(
       tap(products => {
         this.state.update(s => ({
@@ -57,8 +56,6 @@ export class ProductService {
       })
     ).subscribe();
   }
-
-
   saveProduct(body: any) {
 
     this.state.update(s => ({
@@ -86,6 +83,11 @@ export class ProductService {
         });
       }),
       catchError((err: HttpErrorResponse) => {
+        this.state.update(s => ({
+          ...s,
+          loading: false,
+          error: 'فشل حفظ المنتج. الرجاء المحاولة مرة أخرى.'
+        }));
 
         return throwError(() => err);
       }),
@@ -166,4 +168,10 @@ export class ProductService {
     );
   }
 
+}
+export interface ProductState {
+  products: Product[];
+  loading: boolean;
+  error: string | null;
+  deleting: boolean;
 }

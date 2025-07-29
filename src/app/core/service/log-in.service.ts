@@ -17,10 +17,8 @@ export class LogInService {
   public authToken = computed<string | null>(() => this.currentUserToken());
   constructor() { }
 
-  login(credentials: any) {
-    const loginUrl = 'https://api.escuelajs.co/api/v1/auth/login';
-
-    return this._http.post<any>(this.apiUrl + 'auth/login', credentials).pipe(
+  login(body: any) {
+    return this._http.post<any>(this.apiUrl + 'auth/login', body).pipe(
       tap((response) => {
         console.log('Token', response.access_token);
         const token = response.access_token;
