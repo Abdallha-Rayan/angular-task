@@ -65,21 +65,18 @@ export class DialogProductComponent {
 
     const formData = this.productForm.getRawValue();
 
-    // نحدد أي دالة في الخدمة سنستدعي
     const saveOrUpdate$ = this.itemToEdit
       ? this._ProductService.updateProduct(formData)
       : this._ProductService.saveProduct(formData);
 
-    // نستدعيها ونشترك في الرد
     saveOrUpdate$.subscribe({
       next: () => {
         console.log('Operation successful inside Dialog.');
-        this.productForm.reset(); // 1. الابن يعيد تعيين الفورم بنفسه
-        this.save.emit(); // 2. الابن يخبر الأب بأن العملية نجحت
+        this.productForm.reset();
+        this.save.emit();
       },
       error: (err) => {
         console.error('Operation failed inside Dialog:', err);
-        // هنا يمكنك عرض رسالة خطأ للمستخدم داخل النافذة
       }
     });
   }
