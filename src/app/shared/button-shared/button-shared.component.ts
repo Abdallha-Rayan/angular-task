@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [SpinnerComponent, CommonModule],
   templateUrl: './button-shared.component.html',
-  styleUrl: './button-shared.component.scss'
+  styleUrl: './button-shared.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ButtonSharedComponent {
   @Input() cssClass: string = 'btn btn-primary btn-lg';

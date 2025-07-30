@@ -55,13 +55,8 @@ export class DashbordProductComponent {
     console.log('isproductDialogVisible', this.isproductDialogVisible());
 
   }
-  handlecourseSave(formData: any): void {
-
-    if (this.selectedProductForEdit()) {
-      this._ProductService.updateProduct({ ...formData, id: this.selectedProductForEdit().id });
-    } else {
-      this._ProductService.saveProduct(formData);
-    }
+  handlecourseSave(): void {
+    console.log('Child has reported a successful save. Closing dialog.');
     this.isproductDialogVisible.set(false);
   }
   openEditProductDialog(product: any) {
